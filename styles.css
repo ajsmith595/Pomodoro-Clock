@@ -1,0 +1,79 @@
+@font-face{
+    src: url("ROADWAY_.ttf");
+    font-family: Roadway;
+}
+
+.jumbotron{
+    background-color: #313131;
+    height: 90vh;
+}
+
+.jumbotron h1, .jumbotron h3{
+    font-family: Roadway;
+    color: white;
+}
+.jumbotron h3{
+    font-variant: small-caps;
+}
+.jumbotron h3 a{
+    text-decoration: none;
+}
+#canvas-circle{
+    margin-left: 40vw;
+    margin-right: 40vw;
+    position: absolute;
+    pointer-events: none;
+}
+
+#timer-set{
+    margin-left: 40vw;
+    margin-right: 40vw;
+
+    width: 20vw;
+    height: 20vw;
+    line-height: 8vw;
+}
+#timer-set div h1{
+    line-height: 14vw;
+    height: 7vw;
+    vertical-align: bottom;
+}
+#timer-set div h3{
+    line-height: 2vw;
+}
+
+#timer-text{
+    display: none;
+}
+
+/*
+div canvas, #circle-text{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 40%;
+    margin-right: 40%;
+    display: block;
+    height: 20vw;
+    width: 20vw;
+    position: absolute;
+}
+
+#extender{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 40%;
+    margin-right: 40%;
+    display: block;
+    height: 20vw;
+    width: 40vw;
+    }*/
+#circle-text{
+    /*line-height: 20vw;*/
+    line-height: 16vw;
+    height: 8vw;
+    vertical-align: bottom;
+}
+#circle-text-unit{
+
+        line-height: 3vw;
+}

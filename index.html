@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery.min.js"></script>
+    <script src="main.js"></script>
+    <title>Pomodoro Clock!</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="text-center">POMODORO CLOCK</h1>
+        <h3 class="text-center">MADE BY <a href="https://ajsmith595.github.io/Portfolio/">ADAM SMITH</a></h3>
+
+        <div id="circle">
+            <canvas id="canvas-circle"></canvas>
+            <div id="timer-text" class="text-center">
+                <h1 class="text-center" id="circle-text">25</h1>
+                <h3 class="text-center" id="circle-text-unit">MINS</h3>
+                <button id="resetbtn" class="btn btn-danger ">RESET</button>
+            </div>
+            <div id="timer-set" class="text-center">
+                <div>
+                    <h1 id="timer-text-prev">25</h1>
+                    <h3>MINUTES</h3>
+                </div>
+                <button class="btn btn-primary" id="addminsbtn">+</button>
+                <button class="btn btn-primary" id="minusminsbtn">-</button>
+                <button class="btn btn-success" id="startbtn">Start!</button>
+            </div>
+        </div>
+
+
+    </div>
+
+</html>
