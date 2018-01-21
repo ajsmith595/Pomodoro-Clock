@@ -4,7 +4,7 @@ var canvas;
 var thickness = 10;
 var startAngle = -Math.PI / 2;
 var interval;
-var mins = 25;
+var mins = .25;
 var timeDone = 0;
 $(document).ready(function(){
     canvas = document.getElementById('canvas-circle');
@@ -35,11 +35,12 @@ $(document).ready(function(){
         else{
             $('#circle-text-unit').html("MINUTE");
         }
-        interval = setInterval(Draw, 10);
+        interval = [setInterval(Draw, 10), setInterval(AddTime, 1000)];
     });
     $('#resetbtn').click(function(){
 
-        clearInterval(interval);
+        clearInterval(interval[0]);
+        clearInterval(interval[1]);
         $('#timer-set').css('display', 'block');
         $('#timer-text').css('display', 'none');
         mins = 25;
@@ -66,11 +67,33 @@ window.onresize = function(e){
         Draw();
     }
 }
+var timeDone_ = 0;
+function AddTime(){
+    timeDone_ += 1;
+    if(timeDone_ > timeDone){
+        timeDone = timeDone_;
+    }
 
+    if(mins * 60 - timeDone <= 0){
 
+        var audio = new Audio('bleep.mp3');
+        audio.play();
+        clearInterval(interval[0]);
+        clearInterval(interval[1]);        
+    }
+    var timeRemaining = mins * 60 - timeDone;
+    if(timeRemaining < 100){
+        $('#circle-text-unit').html("SECONDS");
+        $('#circle-text').html(Math.ceil(timeRemaining));
+    }
+    else{
+        $('#circle-text-unit').html("MINUTES");
+        $('#circle-text').html(Math.ceil(timeRemaining / 60));
+    }
+}
 
 function Draw(){
-    timeDone += 0.01;
+    timeDone += .01;
     var endAngle = angle;
     var context = canvas.getContext("2d");
     context.strokeStyle="#FF0000";
@@ -82,23 +105,7 @@ function Draw(){
         context.stroke();
         context.closePath();
     //}
-    if(angle >= Math.PI * 1.5){
-        clearInterval(interval);
-        var audio = new Audio('bleep.mp3');
-        audio.play();
-    }
-    else{
-        angle = (timeDone / (mins * 60)) * Math.PI * 2 - Math.PI / 2;
-    }
-    var timeRemaining = mins * 60 - timeDone;
-    if(timeRemaining < 100){
-        $('#circle-text-unit').html("SECONDS");
-        $('#circle-text').html(Math.ceil(timeRemaining));
-    }
-    else{
-        $('#circle-text-unit').html("MINUTES");
-        $('#circle-text').html(Math.ceil(timeRemaining / 60));
-    }
+    angle = (timeDone / (mins * 60)) * Math.PI * 2 - Math.PI / 2;
 
 
 }
