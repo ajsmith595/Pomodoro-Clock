@@ -4,7 +4,7 @@ var canvas;
 var thickness = 10;
 var startAngle = -Math.PI / 2;
 var interval;
-var mins = .25;
+var mins = 25;
 var timeDone = 0;
 $(document).ready(function(){
     canvas = document.getElementById('canvas-circle');
@@ -79,7 +79,7 @@ function AddTime(){
         var audio = new Audio('bleep.mp3');
         audio.play();
         clearInterval(interval[0]);
-        clearInterval(interval[1]);        
+        clearInterval(interval[1]);
     }
     var timeRemaining = mins * 60 - timeDone;
     if(timeRemaining < 100){
