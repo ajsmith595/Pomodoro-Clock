@@ -6,10 +6,12 @@ var startAngle = -Math.PI / 2;
 var interval;
 var mins = 25;
 var timeDone = 0;
+var timeDone_ = 0;
 $(document).ready(function(){
     canvas = document.getElementById('canvas-circle');
     var windowWidth = window.innerWidth;
     var widthAndHeight = (windowWidth  * 0.2);
+    //if(widthAndHeight < )
     $('#canvas-circle').attr("width", widthAndHeight);
     $('#canvas-circle').attr("height", widthAndHeight);
 
@@ -29,6 +31,8 @@ $(document).ready(function(){
         $('#timer-text').css('display', 'block');
         $('#timer-set').css('display', 'none');
         $('#circle-text').html(mins);
+        timeDone = 0;
+        timeDone_ = 0;
         if(mins > 1){
             $('#circle-text-unit').html("MINUTES");
         }
@@ -44,7 +48,6 @@ $(document).ready(function(){
         $('#timer-set').css('display', 'block');
         $('#timer-text').css('display', 'none');
         mins = 25;
-        timeDone = 0;
         angle = -Math.PI / 2;
         UpdatePrevText();
         canvas.getContext("2d").clearRect(0,0, canvas.offsetWidth, canvas.offsetHeight);
@@ -67,7 +70,7 @@ window.onresize = function(e){
         Draw();
     }
 }
-var timeDone_ = 0;
+
 function AddTime(){
     timeDone_ += 1;
     if(timeDone_ > timeDone){
