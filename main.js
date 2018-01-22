@@ -39,7 +39,7 @@ $(document).ready(function(){
         else{
             $('#circle-text-unit').html("MINUTE");
         }
-        interval = [setInterval(Draw, 10), setInterval(AddTime, 1000)];
+        interval = [setInterval(AddTimeMilliseconds, 10), setInterval(AddTime, 1000)];
     });
     $('#resetbtn').click(function(){
 
@@ -94,9 +94,12 @@ function AddTime(){
         $('#circle-text').html(Math.ceil(timeRemaining / 60));
     }
 }
+function AddTimeMilliseconds(){
+    timeDone += 0.01;
+    Draw();
+}
 
 function Draw(){
-    timeDone += .01;
     var endAngle = angle;
     var context = canvas.getContext("2d");
     context.strokeStyle="#FF0000";
